@@ -82,8 +82,8 @@ analytics:
 author:
   name             : "Christiana Meyer"
   avatar           : "stupiduglydumb.png"
-  bio              : "Undergrad at UMBC"
-  location         : "St. Mary's, Maryland"
+  bio              : "Geography and Environmental Systems Undergrad at UMBC"
+  location         : "Baltimore, Maryland"
   employer         :
   pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   googlescholar    : "http://yourfullgooglescholarurl.com"
@@ -109,7 +109,7 @@ author:
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "replacethistwitterhandle"
+  twitter          : 
   vine             :
   weibo            :
   xing             :
