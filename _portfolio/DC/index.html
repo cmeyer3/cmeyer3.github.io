@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 1149px;
+            height: 493px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/Homeless_Shelter_Locations_2.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[38.778357467543714,-77.2867490796551],[39.02984357790788,-76.69926523324429]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_StamenTerrainBackground_0');
+        map.getPane('pane_StamenTerrainBackground_0').style.zIndex = 400;
+        var layer_StamenTerrainBackground_0 = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain-background/{z}/{x}/{y}.png', {
+            pane: 'pane_StamenTerrainBackground_0',
+            opacity: 1.0,
+            attribution: '<a href="https://maps.stamen.com">Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_StamenTerrainBackground_0;
+        map.addLayer(layer_StamenTerrainBackground_0);
+        map.createPane('pane_StamenTerrainLines_1');
+        map.getPane('pane_StamenTerrainLines_1').style.zIndex = 401;
+        var layer_StamenTerrainLines_1 = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/terrain-lines/{z}/{x}/{y}.png', {
+            pane: 'pane_StamenTerrainLines_1',
+            opacity: 1.0,
+            attribution: '<a href="https://maps.stamen.com">Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_StamenTerrainLines_1;
+        map.addLayer(layer_StamenTerrainLines_1);
+        function pop_Homeless_Shelter_Locations_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OWNER_RENT'] !== null ? autolinker.link(feature.properties['OWNER_RENT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PROVIDER'] !== null ? autolinker.link(feature.properties['PROVIDER'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ADDRESS'] !== null ? autolinker.link(feature.properties['ADDRESS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CITY'] !== null ? autolinker.link(feature.properties['CITY'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STATE'] !== null ? autolinker.link(feature.properties['STATE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LATITUDE'] !== null ? autolinker.link(feature.properties['LATITUDE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LONGITUDE'] !== null ? autolinker.link(feature.properties['LONGITUDE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['WARD'] !== null ? autolinker.link(feature.properties['WARD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">TYPE</th>\
+                        <td>' + (feature.properties['TYPE'] !== null ? autolinker.link(feature.properties['TYPE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUBTYPE'] !== null ? autolinker.link(feature.properties['SUBTYPE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STATUS'] !== null ? autolinker.link(feature.properties['STATUS'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NUMBER_OF_'] !== null ? autolinker.link(feature.properties['NUMBER_OF_'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ON_SITE_ME'] !== null ? autolinker.link(feature.properties['ON_SITE_ME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['DGS_CONFIR'] !== null ? autolinker.link(feature.properties['DGS_CONFIR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['DHS_CONFIR'] !== null ? autolinker.link(feature.properties['DHS_CONFIR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ALREADY_PU'] !== null ? autolinker.link(feature.properties['ALREADY_PU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LAST_UPDAT'] !== null ? autolinker.link(feature.properties['LAST_UPDAT'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PUBLISH_TO'] !== null ? autolinker.link(feature.properties['PUBLISH_TO'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AGES_SERVE'] !== null ? autolinker.link(feature.properties['AGES_SERVE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['HOW_TO_ACC'] !== null ? autolinker.link(feature.properties['HOW_TO_ACC'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LGBTQ_FOCU'] !== null ? autolinker.link(feature.properties['LGBTQ_FOCU'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['XCOORD'] !== null ? autolinker.link(feature.properties['XCOORD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['YCOORD'] !== null ? autolinker.link(feature.properties['YCOORD'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAME'] !== null ? autolinker.link(feature.properties['NAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ZIPCODE'] !== null ? autolinker.link(feature.properties['ZIPCODE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['WEB_URL'] !== null ? autolinker.link(feature.properties['WEB_URL'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MAR_ID'] !== null ? autolinker.link(feature.properties['MAR_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GIS_ID'] !== null ? autolinker.link(feature.properties['GIS_ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['GLOBALID'] !== null ? autolinker.link(feature.properties['GLOBALID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CREATOR'] !== null ? autolinker.link(feature.properties['CREATOR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CREATED'] !== null ? autolinker.link(feature.properties['CREATED'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EDITOR'] !== null ? autolinker.link(feature.properties['EDITOR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['EDITED'] !== null ? autolinker.link(feature.properties['EDITED'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">class</th>\
+                        <td>' + (feature.properties['class'] !== null ? autolinker.link(feature.properties['class'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Homeless_Shelter_Locations_2_0(feature) {
+            switch(String(feature.properties['class'])) {
+                case 'Crisis She':
+                    return {
+                pane: 'pane_Homeless_Shelter_Locations_2',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(68,41,202,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Low Barrie':
+                    return {
+                pane: 'pane_Homeless_Shelter_Locations_2',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(33,233,163,1.0)',
+                interactive: true,
+            }
+                    break;
+                case 'Transition':
+                    return {
+                pane: 'pane_Homeless_Shelter_Locations_2',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(220,56,111,1.0)',
+                interactive: true,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_Homeless_Shelter_Locations_2',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(186,206,83,1.0)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Homeless_Shelter_Locations_2');
+        map.getPane('pane_Homeless_Shelter_Locations_2').style.zIndex = 402;
+        map.getPane('pane_Homeless_Shelter_Locations_2').style['mix-blend-mode'] = 'normal';
+        var layer_Homeless_Shelter_Locations_2 = new L.geoJson(json_Homeless_Shelter_Locations_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Homeless_Shelter_Locations_2',
+            layerName: 'layer_Homeless_Shelter_Locations_2',
+            pane: 'pane_Homeless_Shelter_Locations_2',
+            onEachFeature: pop_Homeless_Shelter_Locations_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Homeless_Shelter_Locations_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Homeless_Shelter_Locations_2);
+        map.addLayer(layer_Homeless_Shelter_Locations_2);
+        setBounds();
+        </script>
+    </body>
+</html>
