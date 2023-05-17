@@ -21,6 +21,11 @@ Work experience
   * Duties included: assisted with experiments and interpreted data
   * Supervisor: Jeremy Testa
 
+* Summer 2020: personal shopper
+  * Walmart
+  * Duties included: filled Online orders from all departments
+  * Supervisor: Isa Venegas
+
 
   
 Skills
