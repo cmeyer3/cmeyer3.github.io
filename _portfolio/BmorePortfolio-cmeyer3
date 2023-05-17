@@ -1,7 +1,6 @@
 ---
 title: "Baltimore Hexagons"
-excerpt: "Map<br/><img src='/images/slayyyy.png'>"
+excerpt: "Map<br/><img src='/images/Screenshot 2023-05-17 120754.png'>"
 collection: portfolio
 ---
-
-This is an item in your portfolio. It can be have images or nice text. If you name the file .md, it will be parsed as markdown. If you name the file .html, it will be parsed as HTML. 
+These maps show different variables of baltimore through hexagons. The Maps were created in R Studio.
