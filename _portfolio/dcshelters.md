@@ -4,4 +4,4 @@ excerpt: Here is an interactive map of Homeless shelters in D.C. Data was retrei
 collection: portfolio
 ---
 [D.C. Shelters](http://cmeyer3.github.io/portfolio/DC/index.html)
-The shelters are split into three categories: Dark blue are crisis shelters, Teal are low barrier, and pink are transitiosal
+The shelters are split into three categories: dark blue are crisis shelters, teal are low barrier, and pink are transitiosal
