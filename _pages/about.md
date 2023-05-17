@@ -1,13 +1,13 @@
 ---
 permalink: /
-title: "academicpages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "About Christiana"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
-About Christiana
+
 ======
 
 Christiana Meyer is a highly knowledgeable and accomplished professional with a strong academic background in Geography and Environmental Systems, holding a B.S. degree. With valuable experience gained during two summers at The Chesapeake Biological Laboratory, Christiana has demonstrated a deep understanding of environmental research and conservation.
