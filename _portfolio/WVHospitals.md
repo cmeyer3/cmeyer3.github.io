@@ -13,6 +13,7 @@ I chose West Virginia to model disparity in access to hospitals because the stat
 Methods 
 ======
 The first map I created in Rstudio was the median household income. I used get_acs to find information on the counties and plotted them using ggplot. The second map I created was percentage race. I created a map showing the percentage of people identifying asian, black, hispanic, native and white in 2020 using tidy census. This was then plotted using tm_shape. However I only included the white percentage in the final layout because I believed this would have the greatest impact on hospital locations. <br/><img src='/images/wvrace.jpg'> 
+
 Finally I created a map showing the total population per county using get_acs and ggplot.  
 I saved the previous shapefiles and brought them into QGIS where I manipulated the data to better show the results. I took the shapefile for total population and found the area by creating a new field in the attribute table then using geometry area. This found the area of each county in square miles. I then created a new field where I used previous fields to find the population density by dividing the total population by the area in square miles. 
 
