@@ -3,7 +3,6 @@ title: "West Virginia Hospitals"
 excerpt: Here is map showing hospital locations compared to race, median household income, and population density. Data was retreived from West Virginia GIS technical Center, and the U.S. Census.  <br/><img src='/images/WVhospitals.jpg'>
 collection: portfolio
 ---
-[WV Hospitals]
 Introduction
 ======
 Access to quality healthcare in the United States is a big issue to many people as many disparities in healthcare access exist due to race or poverty status. The ability to access medical care during an emergency is incredibly important to address when examining healthcare disparities as the amount of time it takes to get to a hospital can be the difference between life or death. Areas in which medical care is hard to find are known as medical, or care deserts, and are often found in rural or low income areas. This project aims to highlight these disparities by showing the relationship between hospital locations and the population statistics such as race, median household income, and population density. 
