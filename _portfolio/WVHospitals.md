@@ -5,12 +5,10 @@ collection: portfolio
 ---
 <br/><img src='/images/WVhospitals.jpg'>
 
-
 Introduction
 ======
 Access to quality healthcare in the United States is a big issue to many people as many disparities in healthcare access exist due to race or poverty status. The ability to access medical care during an emergency is incredibly important to address when examining healthcare disparities as the amount of time it takes to get to a hospital can be the difference between life or death. Areas in which medical care is hard to find are known as medical, or care deserts, and are often found in rural or low income areas. This project aims to highlight these disparities by showing the relationship between hospital locations and the population statistics such as race, median household income, and population density. 
 	I chose West Virginia to model disparity in access to hospitals because the state is notorious for having some of the worst healthcare in the country. Because care deserts are common, I believed population density to have the greatest impact on where the hospitals are located. A hospital point shapefile was downloaded from the West Virginia GIS Technical center. Information on the West Virginia population was taken from the United States Census using Tidy Census in Rstudio. Median household income, total population, and race percentage information for each county was plotted using ggplot. The plots were then downloaded as a shapefile using st_write, and manipulated in QGIS. Population density was found by using geometry statistics in QGIS for the total population shapefile, then adding a field to calculate the total population divided by the area in square miles. 
-	
 	
 Methods 
 ======
